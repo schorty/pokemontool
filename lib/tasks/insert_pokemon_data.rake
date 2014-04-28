@@ -12,8 +12,7 @@ namespace :pokemon do
     csv.each do |row|
       row = row.to_hash.symbolize_keys!
 
-      if row[:local_language_id] == '6'
-        Pokemon.create!(id: pokemon_species_id, name: row[:name]) 
+      if Pokemon.create!(id: row[:id], name: row[:name]) 
         puts "#{row[:name]} created!"
       else
         puts "#{row[:name]} not created!"
@@ -32,20 +31,12 @@ namespace :pokemon do
       row = row.to_hash.symbolize_keys!
 
       if pokemon = Pokemon.find(row[:pokemon_id])
-        case row[:stat_id]
-        when 1
-          pokemon.hp_base = row[:base_stat]
-        when 2
-          pokemon.attack_base = row[:base_stat]
-        when 3
-          pokemon.defense_base = row[:base_stat]
-        when 4
-          pokemon.special_attack_base = row[:base_stat]
-        when 5
-          pokemon.special_defense_base = row[:base_stat]
-        when 6
-          pokemon.speed_base = row[:base_stat]
-        end
+        pokemon.hp_base = row[:hp].to_i
+        pokemon.attack_base = row[:attack].to_i
+        pokemon.defense_base = row[:defense].to_i
+        pokemon.special_attack_base = row[:special_attack].to_i
+        pokemon.special_defense_base = row[:special_defense].to_i
+        pokemon.speed_base = row[:speed].to_i
 
         if pokemon.save!
           puts "#{pokemon.name} updated"
