@@ -1,0 +1,10 @@
+$(function() {
+  $("#quick_search").autocomplete({
+    source: "/items/autocomplete",
+    select: function(event, ui) {
+      event.preventDefault()
+      window.location.href = ui.item.value
+    },
+    minLength: 1
+  })
+})

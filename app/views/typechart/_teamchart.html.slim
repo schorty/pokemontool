@@ -1,0 +1,16 @@
+- if @team.members.any?
+  table.team_chart.table_margin
+    - @team.type_matrix.first.each do |_|
+      colgroup
+    tbody
+      - @team.type_matrix.each do |row|
+        tr
+          - row.each do |column|
+            - if column.to_s == '2.0' || column.to_s == '4.0'
+              td.red= column.to_s
+            - elsif column.to_s == '0.0'
+              td.grey= column.to_s
+            - elsif column.to_s == '0.5' || column.to_s == '0.25'
+              td.green= column.to_s
+            - else
+              td= column.to_s

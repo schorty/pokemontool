@@ -1,0 +1,22 @@
+table
+  thead
+    tr
+      th
+        | &nbsp;
+      - @types.each do |type|
+        th= type.name
+  tbody
+    - @types.each do |type|
+      tr
+        th= type.name
+        - @effects.shift.each do |effect|
+          - if effect == '2.0'
+            td.green= effect
+          - elsif effect == '0.0'
+            td.grey= effect
+          - elsif effect == '0.5'
+            td.red= effect
+          - else
+            td= effect
+
+

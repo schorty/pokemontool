@@ -1,0 +1,14 @@
+.col3-1
+  .type_select= form_tag(typechart_show_chart_path, remote: true, class: 'form', team: @team)
+    - a = ['Erstes: ', 'Zweites: ', 'Drittes: ', 'Viertes: ', 'Fünftes: ', 'Sechstes: ']
+    - 6.times do |count|
+      = a[count]
+
+      = select_tag 'm[][type2]', options_for_select(['None'] + @types.collect { |t| t[:name] }), class: 'type_select_field'
+      = select_tag 'm[][type1]', options_for_select(['None'] + @types.collect { |t| t[:name] }), class: 'type_select_field'
+      br
+    = submit_tag 'Show'
+
+.col3-2
+  #typechart
+    = render 'teamchart'
