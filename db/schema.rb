@@ -11,12 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119125220) do
+ActiveRecord::Schema.define(version: 20140428175723) do
 
   create_table "effects", force: true do |t|
     t.string   "type_id"
     t.string   "attacker_type"
     t.string   "factor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pokemons", force: true do |t|
+    t.string   "name"
+    t.integer  "hp_base"
+    t.integer  "attack_base"
+    t.integer  "defense_base"
+    t.integer  "special_attack_base"
+    t.integer  "special_defense_base"
+    t.integer  "speed_base"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
