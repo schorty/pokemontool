@@ -4,6 +4,9 @@
       | Level
       = text_field_tag 'm[level]', 50, id: 'attacker_level_field'
     .field
+      | Search Pokemon
+      =text_field_tag :p, nil, id: 'pokemon_search', placeholder: 'Insert Pokemon'
+    .field
       | Attack
       = text_field_tag 'm[attack]', 180, id: 'attacker_attack_field'
     table.field#boost-table

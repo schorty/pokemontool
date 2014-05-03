@@ -61,7 +61,7 @@ body {
 		padding: 5px 10px;
 		margin: 90px 0 0 100px;
 		box-sizing: border-box;
-		width: 250px;
+		width: 300px;
 		background-color: $typechart-bg-color-odd;
 		border-radius: 8px;
 		border: 1px solid $typechart-border-color;
@@ -90,13 +90,17 @@ body {
 		margin-top: 20px;
 	}
 	.damage_data {
-		width: 250px;
+		width: 300px;
 		#boost-table {
+			width: 250px;
 			margin-bottom: 5px;
 			tr {
 				td, th {
 					text-align: center;
 					vertical-align: middle;
+					input {
+						width: 20px;
+					}
 				}
 				th {
 					height: 10px;
@@ -180,6 +184,10 @@ body {
 	&.last-radio {
 		margin-bottom: 5px;
 	}
+}
+
+#pokemon_search {
+	width: 100px !important;
 }
 
 .col3-2 {
