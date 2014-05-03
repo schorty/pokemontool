@@ -1,8 +1,8 @@
 require 'csv'
 
-namespace :pokemon do
+namespace :pokemons do
   desc 'Gotta catch em all!'
-  task insert_pokemon: :environment do
+  task create_pokemon: :environment do
     Pokemon.delete_all
 
     puts 'Start creating Pokemon'

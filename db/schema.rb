@@ -11,12 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428175723) do
+ActiveRecord::Schema.define(version: 20140503121357) do
 
   create_table "effects", force: true do |t|
     t.string   "type_id"
     t.string   "attacker_type"
     t.string   "factor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "moves", force: true do |t|
+    t.string   "name"
+    t.integer  "power"
+    t.integer  "type_id"
+    t.integer  "pp"
+    t.integer  "accuracy"
+    t.integer  "priority"
+    t.integer  "damage_class"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pokemon_moves", force: true do |t|
+    t.integer  "pokemon_id"
+    t.integer  "move_id"
+    t.integer  "learn_method"
+    t.integer  "level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
