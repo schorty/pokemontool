@@ -13,6 +13,7 @@ gem 'sqlite3'
 gem 'jquery-rails', '~> 2.1'
 gem 'sass-rails', '~> 4.0'
 gem 'rename'
+gem 'bootstrap-slider-rails', '~> 1.9.0'
 
 group :test do
   gem 'simplecov', '>= 0.8.0.pre2', require: false

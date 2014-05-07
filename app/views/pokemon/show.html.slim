@@ -1,0 +1,45 @@
+h1.row
+  .col-md-12
+    p
+      = @pokemon.name
+      | (
+      = @pokemon.id
+      | )
+.row
+  h2.col-md-12
+    | Basestats
+  .col-md-6
+    table.table
+      tbody
+        tr
+          td Hitpoints
+          td= @pokemon.hp_base
+        tr
+          td Attack
+          td= @pokemon.attack_base
+        tr
+          td Defense
+          td= @pokemon.defense_base
+        tr
+          td Special Attack
+          td= @pokemon.special_attack_base
+        tr
+          td Special Defense
+          td= @pokemon.special_defense_base
+        tr
+          td Speed
+          td= @pokemon.speed_base
+        tr
+          td BST
+          td= @pokemon.hp_base + @pokemon.attack_base + @pokemon.defense_base + @pokemon.special_attack_base + @pokemon.special_defense_base + @pokemon.speed_base
+
+
+input#ex1 data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"
+
+javascript:
+  $('#ex1').slider({
+    formater: function(value) {
+      console.log(value)
+      return 'Current value: ' + value
+    }
+  });
