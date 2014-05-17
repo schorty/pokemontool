@@ -1,11 +1,11 @@
-nav
-  ul
-    li
-      = link_to typechart_index_path
-        | Typechart
-    li
-      = link_to typechart_chart_path
-        | Teambuilder
-    li
-      = link_to damage_calc_path
-        | Dmg-Calc
+.container
+  .navbar-header
+    = link_to 'Pokemontool', typechart_index_path, class: 'navbar-brand'
+  .navbar-collapse.collapse
+    ul.nav.navbar-nav
+      li
+        = link_to 'Typechart', typechart_index_path
+      li
+        = link_to 'Teambuilder', typechart_chart_path
+      li
+        = link_to 'Dmg-Calc', damage_calc_path

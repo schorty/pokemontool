@@ -1,4 +1,4 @@
-.col3-1
+.row
   .type_select= form_tag(typechart_show_chart_path, remote: true, class: 'form', team: @team)
     - a = ['Erstes: ', 'Zweites: ', 'Drittes: ', 'Viertes: ', 'Fünftes: ', 'Sechstes: ']
     - 6.times do |count|
@@ -9,6 +9,6 @@
       br
     = submit_tag 'Show'
 
-.col3-2
+.row
   #typechart
     = render 'teamchart'

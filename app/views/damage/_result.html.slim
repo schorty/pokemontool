@@ -1,35 +1,36 @@
-table.table.table_margin
-  tr
-    th &nbsp;
-    th Absolute damage
-    th Relative damage
-  tr
-    td Maximum damage
-    td= @dc.max_damage
-    td
-      = @dc.max_damage_rel
+.table-responsive
+  table.table.table-striped
+    tr
+      th &nbsp;
+      th Absolute damage
+      th Relative damage
+    tr
+      td Maximum damage
+      td= @dc.max_damage
+      td
+        = @dc.max_damage_rel
+        | %
+    tr
+      td Minimum damage
+      td= @dc.min_damage
+      td
+        = @dc.min_damage_rel
+        | %
+
+  .hp-bar
+    .filling#max-damage
+      = @dc.max_dmg_hp_left
       | %
-  tr
-    td Minimum damage
-    td= @dc.min_damage
-    td
-      = @dc.min_damage_rel
+  .hp-bar
+    .filling#min-damage
+      = @dc.min_dmg_hp_left
       | %
 
-.hp-bar
-  .filling#max-damage
+  script
+    | animate_bar('#max-damage',
     = @dc.max_dmg_hp_left
-    | %
-.hp-bar
-  .filling#min-damage
+    | );
+
+    | animate_bar('#min-damage',
     = @dc.min_dmg_hp_left
-    | %
-
-script
-  | animate_bar('#max-damage',
-  = @dc.max_dmg_hp_left
-  | );
-
-  | animate_bar('#min-damage',
-  = @dc.min_dmg_hp_left
-  | );
+    | );

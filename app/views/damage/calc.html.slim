@@ -1,153 +1,153 @@
-.col3-1
-  .damage_data.table_margin= form_tag(damage_result_path, remote: true, class: 'form', data: @data)
-    .field
-      | Level
-      = text_field_tag 'm[level]', 50, id: 'attacker_level_field'
-    .field
-      | Search Pokemon
-      =text_field_tag :p, nil, id: 'pokemon_search', placeholder: 'Insert Pokemon'
-    .field
-      | Attack
-      = text_field_tag 'm[attack]', 180, id: 'attacker_attack_field'
-    table.field#boost-table
-      tr
-        th -6
-        th -5
-        th -4
-        th -3
-        th -2
-        th -1
-        th 0
-        th +1
-        th +2
-        th +3
-        th +4
-        th +5
-        th +6
-      tr
-        td= radio_button :m, 'attack_boosts', '-6'
-        td= radio_button :m, 'attack_boosts', '-5'
-        td= radio_button :m, 'attack_boosts', '-4'
-        td= radio_button :m, 'attack_boosts', '-3'
-        td= radio_button :m, 'attack_boosts', '-2'
-        td= radio_button :m, 'attack_boosts', '-1'
-        td= radio_button :m, 'attack_boosts', '0', checked: 'checked'
-        td= radio_button :m, 'attack_boosts', '+1'
-        td= radio_button :m, 'attack_boosts', '+2'
-        td= radio_button :m, 'attack_boosts', '+3'
-        td= radio_button :m, 'attack_boosts', '+4'
-        td= radio_button :m, 'attack_boosts', '+5'
-        td= radio_button :m, 'attack_boosts', '+6'
-    .field
-      | Base Attack
-      = text_field_tag 'm[base]', 80, id: 'base_attack_field'
-    #seperating_line
+.row
+  .col-md-8
+    .damage_data.table_margin= form_tag(damage_result_path, remote: true, class: 'form', data: @data)
+      .field
+        | Level
+        = text_field_tag 'm[level]', 50, id: 'attacker_level_field'
+      .field
+        | Search Pokemon
+        =text_field_tag :p, nil, id: 'pokemon_search', placeholder: 'Insert Pokemon'
+      .field
+        | Attack
+        = text_field_tag 'm[attack]', 180, id: 'attacker_attack_field'
+      table.field#boost-table
+        tr
+          th -6
+          th -5
+          th -4
+          th -3
+          th -2
+          th -1
+          th 0
+          th +1
+          th +2
+          th +3
+          th +4
+          th +5
+          th +6
+        tr
+          td= radio_button :m, 'attack_boosts', '-6'
+          td= radio_button :m, 'attack_boosts', '-5'
+          td= radio_button :m, 'attack_boosts', '-4'
+          td= radio_button :m, 'attack_boosts', '-3'
+          td= radio_button :m, 'attack_boosts', '-2'
+          td= radio_button :m, 'attack_boosts', '-1'
+          td= radio_button :m, 'attack_boosts', '0', checked: 'checked'
+          td= radio_button :m, 'attack_boosts', '+1'
+          td= radio_button :m, 'attack_boosts', '+2'
+          td= radio_button :m, 'attack_boosts', '+3'
+          td= radio_button :m, 'attack_boosts', '+4'
+          td= radio_button :m, 'attack_boosts', '+5'
+          td= radio_button :m, 'attack_boosts', '+6'
+      .field
+        | Base Attack
+        = text_field_tag 'm[base]', 80, id: 'base_attack_field'
+      #seperating_line
 
-    .field
-      | Defense
-      = text_field_tag 'm[defense]', 200, id: 'defender_level_field'
-    table.field#boost-table
-      tr
-        th -6
-        th -5
-        th -4
-        th -3
-        th -2
-        th -1
-        th 0
-        th +1
-        th +2
-        th +3
-        th +4
-        th +5
-        th +6
-      tr
-        td= radio_button :m, 'defense_boosts', '-6'
-        td= radio_button :m, 'defense_boosts', '-5'
-        td= radio_button :m, 'defense_boosts', '-4'
-        td= radio_button :m, 'defense_boosts', '-3'
-        td= radio_button :m, 'defense_boosts', '-2'
-        td= radio_button :m, 'defense_boosts', '-1'
-        td= radio_button :m, 'defense_boosts', '0', checked: 'checked'
-        td= radio_button :m, 'defense_boosts', '+1'
-        td= radio_button :m, 'defense_boosts', '+2'
-        td= radio_button :m, 'defense_boosts', '+3'
-        td= radio_button :m, 'defense_boosts', '+4'
-        td= radio_button :m, 'defense_boosts', '+5'
-        td= radio_button :m, 'defense_boosts', '+6'
-    .field
-      |HP(Defender)
-      = text_field_tag 'm[hp]', 133, id: 'defender_hp_field'
-    #seperating_line
+      .field
+        | Defense
+        = text_field_tag 'm[defense]', 200, id: 'defender_level_field'
+      table.field#boost-table
+        tr
+          th -6
+          th -5
+          th -4
+          th -3
+          th -2
+          th -1
+          th 0
+          th +1
+          th +2
+          th +3
+          th +4
+          th +5
+          th +6
+        tr
+          td= radio_button :m, 'defense_boosts', '-6'
+          td= radio_button :m, 'defense_boosts', '-5'
+          td= radio_button :m, 'defense_boosts', '-4'
+          td= radio_button :m, 'defense_boosts', '-3'
+          td= radio_button :m, 'defense_boosts', '-2'
+          td= radio_button :m, 'defense_boosts', '-1'
+          td= radio_button :m, 'defense_boosts', '0', checked: 'checked'
+          td= radio_button :m, 'defense_boosts', '+1'
+          td= radio_button :m, 'defense_boosts', '+2'
+          td= radio_button :m, 'defense_boosts', '+3'
+          td= radio_button :m, 'defense_boosts', '+4'
+          td= radio_button :m, 'defense_boosts', '+5'
+          td= radio_button :m, 'defense_boosts', '+6'
+      .field
+        |HP(Defender)
+        = text_field_tag 'm[hp]', 133, id: 'defender_hp_field'
+      #seperating_line
 
-    .field.radio-damage-calc
-      | Super super effective (x4)
-      = radio_button :m, 'effectiveness', '4'
-    .field.radio-damage-calc
-      | Super effective (x2)
-      = radio_button :m, 'effectiveness', '2'
-    .field.radio-damage-calc
-      | Normal effective (x1)
-      = radio_button :m, 'effectiveness', '1', checked: 'checked'
-    .field.radio-damage-calc
-      | Normal effective (x0.5)
-      = radio_button :m, 'effectiveness', '0.5'
-    .field.radio-damage-calc.last-radio
-      | Very uneffective (x0.25)
-      = radio_button :m, 'effectiveness', '0.25'
-    #seperating_line
+      .field.radio-damage-calc
+        | Super super effective (x4)
+        = radio_button :m, 'effectiveness', '4'
+      .field.radio-damage-calc
+        | Super effective (x2)
+        = radio_button :m, 'effectiveness', '2'
+      .field.radio-damage-calc
+        | Normal effective (x1)
+        = radio_button :m, 'effectiveness', '1', checked: 'checked'
+      .field.radio-damage-calc
+        | Normal effective (x0.5)
+        = radio_button :m, 'effectiveness', '0.5'
+      .field.radio-damage-calc.last-radio
+        | Very uneffective (x0.25)
+        = radio_button :m, 'effectiveness', '0.25'
+      #seperating_line
 
-    .field.radio-damage-calc
-      | Choiceband/-specs (x1.5)
-      = radio_button :m, 'item', '1.5'
-    .field.radio-damage-calc
-      | Lifeorb (x1.3)
-      = radio_button :m, 'item', '1.3'
-    .field.radio-damage-calc
-      | Type-plates (x1.2)
-      = radio_button :m, 'item', '1.2'
-    .field.radio-damage-calc
-      | Muscleband (x1.1)
-      = radio_button :m, 'item', '1.1'
-    .field.radio-damage-calc
-      | No effecting Item (x1)
-      = radio_button :m, 'item', '1', checked: 'checked'
-    .field.radio-damage-calc.last-radio
-      | Weakening Berry (x0.5)
-      = radio_button :m, 'item', '0.5'
-    #seperating_line
+      .field.radio-damage-calc
+        | Choiceband/-specs (x1.5)
+        = radio_button :m, 'item', '1.5'
+      .field.radio-damage-calc
+        | Lifeorb (x1.3)
+        = radio_button :m, 'item', '1.3'
+      .field.radio-damage-calc
+        | Type-plates (x1.2)
+        = radio_button :m, 'item', '1.2'
+      .field.radio-damage-calc
+        | Muscleband (x1.1)
+        = radio_button :m, 'item', '1.1'
+      .field.radio-damage-calc
+        | No effecting Item (x1)
+        = radio_button :m, 'item', '1', checked: 'checked'
+      .field.radio-damage-calc.last-radio
+        | Weakening Berry (x0.5)
+        = radio_button :m, 'item', '0.5'
+      #seperating_line
 
-    .field.radio-damage-calc
-      | Adaptability (x2)
-      = radio_button :m, 'ability', '2'
-    .field.radio-damage-calc
-      | Strong Jaw/Torrent/... (x1.5)
-      = radio_button :m, 'ability', '1.5'
-    .field.radio-damage-calc.last-radio
-      | No effecting Ability (x1)
-      = radio_button :m, 'ability', '1', checked: 'checked'
-    #seperating_line
+      .field.radio-damage-calc
+        | Adaptability (x2)
+        = radio_button :m, 'ability', '2'
+      .field.radio-damage-calc
+        | Strong Jaw/Torrent/... (x1.5)
+        = radio_button :m, 'ability', '1.5'
+      .field.radio-damage-calc.last-radio
+        | No effecting Ability (x1)
+        = radio_button :m, 'ability', '1', checked: 'checked'
+      #seperating_line
 
-    .field.radio-damage-calc
-      | Criticle hit (x1.5)
-      = check_box 'm[crit]', 'checked'
-    .field.radio-damage-calc.last-radio
-      | STAB (x1.5)
-      = check_box 'm[stab]', 'checked', checked: 'checked'
-    #seperating_line
+      .field.radio-damage-calc
+        | Criticle hit (x1.5)
+        = check_box 'm[crit]', 'checked'
+      .field.radio-damage-calc.last-radio
+        | STAB (x1.5)
+        = check_box 'm[stab]', 'checked', checked: 'checked'
+      #seperating_line
 
-    .field.radio-damage-calc
-      | Beneficial weather (x1.5)
-      = radio_button :m, 'weather', '1.5'
-    .field.radio-damage-calc
-      | Non-effecting/No Weather (x1)
-      = radio_button :m, 'weather', '1', checked: 'checked'
-    .field.radio-damage-calc
-      | Hindering weather (x0.5)
-      = radio_button :m, 'weather', '0.5'
+      .field.radio-damage-calc
+        | Beneficial weather (x1.5)
+        = radio_button :m, 'weather', '1.5'
+      .field.radio-damage-calc
+        | Non-effecting/No Weather (x1)
+        = radio_button :m, 'weather', '1', checked: 'checked'
+      .field.radio-damage-calc
+        | Hindering weather (x0.5)
+        = radio_button :m, 'weather', '0.5'
 
-    = submit_tag 'Calculate'
-.col3-1
-  | &nbsp;
-.col3-1
-  #result
+      = submit_tag 'Calculate'
+
+  .col-md-4
+    #result

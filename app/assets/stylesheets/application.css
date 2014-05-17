@@ -9,6 +9,19 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap
+ *= require bootstrap-theme.min
  *= require bootstrap-slider
- *= require_tree .
  */
+
+.red {
+	color: #cc1511;
+}
+
+.green {
+	color: #bada55;
+}
+
+.grey {
+	color: #999;
+}

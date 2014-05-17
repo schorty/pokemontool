@@ -1,6 +1,6 @@
 class TypechartController < ApplicationController
   def index
-    @types = Type.includes(:effects)
+    @types = Type.all
     @effects = @types.map do |type|
       type.effects.map(&:factor)
     end
