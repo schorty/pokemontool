@@ -1,2 +1,10 @@
-h1 PokemonMove#index
-p Find me in app/views/pokemon_move/index.html.slim
+table.table
+  thead
+    tr
+      th Attacke
+      th Lernart
+  tbody
+    - @pokemon_moves.each do |pokemon_move|
+      tr
+        td= pokemon_move.move.name
+        td= pokemon_move.method_to_html

@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.1.rc3' # '~> 4.0'
+gem 'rails', '4.1.1'
+
 gem 'pg', '>= 0.17.0'
 gem 'therubyracer', '>= 0.12.0' , platforms: :ruby
-gem 'slim-rails', '~> 2.0'
+gem 'slim-rails', '~> 2.1.4'
 gem 'draper', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.1', require: 'bcrypt'
 gem 'sidekiq', '~> 2.15'

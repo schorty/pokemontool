@@ -1,21 +1,18 @@
 Pokemontool::Application.routes.draw do
-  get "move/index"
-  get "move/show"
   get "pokemon_move/index"
   get "pokemon_move/show"
 
   resources :pokemon, only: [:show, :index] do
     member do
-      resources :move, only: [:show, :index]
+      resources :pokemon_moves, only: [:show, :index]
     end
   end
 
-  resources :moves, only: [:show, :index]
+  resources :moves
 
-
-  get "damage/calc"
   get "typechart/show_chart"
   post "typechart/show_chart"
+
   get "typechart/show"
   get "typechart/index"
   
