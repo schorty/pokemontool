@@ -1,2 +1,19 @@
-h1 Pokemon#index
-p Find me in app/views/pokemon/index.html.slim
+table.table
+  thead
+    tr
+      th ID
+      th Name
+      th Type1
+      th Type2
+  tbody
+    - @pokemon.each do |p|
+      tr
+        - if p.id < 10000
+          td= p.id
+        - else
+          td Alternative Form
+        td= p.name
+        - p.types.each do |type|
+          td= type.name
+        - if p.types.count < 2
+          td

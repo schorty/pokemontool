@@ -20,11 +20,24 @@ namespace :moves do
     puts 'Start creating pokemon moves'
     csv_text = File.read('lib/assets/pokemon_moves.csv')
     csv = CSV.parse(csv_text, :headers => true)
-    
+    counter = 0
+
+    enums_for_learn_method = [
+      'Level',
+      'Vererbung',
+      'Attackenhelfer',
+      'TM/VM'
+    ]
+
     csv.each do |row|
       row = row.to_hash
 
-      PokemonMove.create!(pokemon_id: row["pokemon_id"], move_id: row["move_id"], learn_method: row["learn_method_id"], level: row["level"]) 
+      PokemonMove.create!(pokemon_id: row["pokemon_id"], move_id: row["move_id"], learn_method: enums_for_learn_method[row["learn_method_id"].to_i - 1], level: row["level"]) 
+      counter += 1
+
+      if counter % 1000 == 0
+        p counter
+      end
     end
   end
 end

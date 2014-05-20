@@ -2,7 +2,9 @@ class TypechartController < ApplicationController
   def index
     @types = Type.all
     @effects = @types.map do |type|
-      type.effects.map(&:factor)
+      type.effects.map do |effect|
+        {factor: effect.factor, attacker_type: effect.attacker_type}
+      end
     end
   end
 

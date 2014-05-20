@@ -1,4 +1,4 @@
-table.table.table-striped
+table.table
   thead
     tr
       th
@@ -10,13 +10,26 @@ table.table.table-striped
       tr
         th= type.name
         - @effects.shift.each do |effect|
-          - if effect == '2.0'
-            td.green= effect
-          - elsif effect == '0.0'
-            td.grey= effect
-          - elsif effect == '0.5'
-            td.red= effect
+          - if effect[:factor] == '2.0'
+            td.green data-column=effect[:attacker_type]
+              = effect[:factor]
+          - elsif effect[:factor] == '0.0'
+            td.grey data-column=effect[:attacker_type]
+              = effect[:factor]
+          - elsif effect[:factor] == '0.5'
+            td.red data-column=effect[:attacker_type]
+              = effect[:factor]
           - else
-            td= effect
+            td data-column=effect[:attacker_type]
+              = effect[:factor]
 
-
+- content_for(:javascripts)
+  javascript:
+    $('td').on('mouseover', function() {
+      if (!($(this).hasClass('active-column') && $(this).hasClass('active-row')))
+      $('.active-column').removeClass('active-column')
+      $('.active-row').removeClass('active-row')
+      column = $('td[data-column=' + $(this).data('column') + ']')
+      column.addClass('active-column')
+      $(this).siblings().addClass('active-row')
+    })
