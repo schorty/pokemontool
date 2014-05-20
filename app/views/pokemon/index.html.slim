@@ -1,3 +1,5 @@
+= paginate(@pokemon)
+
 table.table
   thead
     tr
@@ -17,3 +19,4 @@ table.table
           td= type.name
         - if p.types.count < 2
           td
+= paginate(@pokemon)
