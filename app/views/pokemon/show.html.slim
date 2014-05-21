@@ -7,39 +7,80 @@ h1.row
       | )
 .row
   h2.col-md-12
-    | Basestats
-  .col-md-6
+    | Stats
+  .col-md-12
     table.table
+      thead
+        tr
+          th
+          th Basestat
+          th Min (negatives Wesen)
+          th Min (neutrales Wesen)
+          th Max (neutrales Wesen)
+          th Max (positives Wesen)
       tbody
         tr
           td Hitpoints
-          td= @pokemon.hp_base
+          td#hp_stat= @pokemon.hp_base
+          - 4.times do |c|
+            td id="#hp_#{c + 1}_calced"
         tr
           td Attack
-          td= @pokemon.attack_base
+          td#attack_stat= @pokemon.attack_base
+          - 4.times do |c|
+            td id="#attack_#{c + 1}_calced"
         tr
           td Defense
-          td= @pokemon.defense_base
+          td#defense_stat= @pokemon.defense_base
+          - 4.times do |c|
+            td id="#defense_#{c + 1}_calced"
         tr
           td Special Attack
-          td= @pokemon.special_attack_base
+          td#special_attack_stat= @pokemon.special_attack_base
+          - 4.times do |c|
+            td id="#special_attack_#{c + 1}_calced"
         tr
           td Special Defense
-          td= @pokemon.special_defense_base
+          td#special_defense_stat= @pokemon.special_defense_base
+          - 4.times do |c|
+            td id="#special_defense_#{c + 1}_calced"
         tr
           td Speed
-          td= @pokemon.speed_base
+          td#speed_stat= @pokemon.speed_base
+          - 4.times do |c|
+            td id="#speed_#{c + 1}_calced"
         tr
-          td BST
+          td Statsumme
           td= @pokemon.hp_base + @pokemon.attack_base + @pokemon.defense_base + @pokemon.special_attack_base + @pokemon.special_defense_base + @pokemon.speed_base
+          - 4.times do |c|
+            td id="#sum_#{c + 1}_calced"
 
+input#ex1.col-md-6 data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"
 
-input#ex1 data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"
 
 javascript:
   $('#ex1').slider({
+    width: 400,
     formater: function(value) {
-      console.log(value)
+      $('#output').val(value)
       return 'Current value: ' + value
     }
   });
+
+  function update_stats(level) {
+
+  }
+
+  function calculate_hp(level, base, ev, iv) {
+    //Level, Base, EV and IV have to be Integer
+    return Math.floor( (iv + 2*base + ev/4 + 100) * level / 100 + 10 )
+  }
+
+  function calculate_stat(level, base, ev, iv, nature) {
+    //Level, Base, EV and IV have to be Integer
+    //nature has to be float: 0.9, 1.0 or 1.1
+    ev = ev || 0
+    iv = iv || 31
+    nature = nature || 1
+    return Math.floor(Math.floor((iv + 2*base + ev/4 + 100) * level / 100 + 5) * nature)
+  }

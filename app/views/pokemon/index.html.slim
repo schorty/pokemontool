@@ -14,9 +14,10 @@ table.table
           td= p.id
         - else
           td Alternative Form
-        td= p.name
+        td= link_to p.name, p
         - p.types.each do |type|
           td= type.name
         - if p.types.count < 2
           td
+
 = paginate(@pokemon)
