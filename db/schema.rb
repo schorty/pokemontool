@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20140520141712) do
 
   create_table "effects", force: true do |t|
-    t.integer  "type_id"
+    t.string   "type_id"
     t.string   "attacker_type"
     t.string   "factor"
     t.datetime "created_at"

@@ -10,4 +10,7 @@ class Type < ActiveRecord::Base
       1.0
     end
   end
+  def to_html
+    "<span class='label type_#{self.name.downcase}'>#{self.name}</span>".html_safe
+  end
 end

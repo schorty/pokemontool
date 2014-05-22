@@ -4,11 +4,11 @@ table.table
       th
         | &nbsp;
       - @types.each do |type|
-        th= type.name
+        th= type.to_html
   tbody
     - @types.each do |type|
       tr
-        th= type.name
+        th= type.to_html
         - @effects.shift.each do |effect|
           - if effect[:factor] == '2.0'
             td.green data-column=effect[:attacker_type]

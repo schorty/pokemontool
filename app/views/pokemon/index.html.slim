@@ -16,7 +16,7 @@ table.table
           td Alternative Form
         td= link_to p.name, p
         - p.types.each do |type|
-          td= type.name
+          td= type.to_html
         - if p.types.count < 2
           td
 

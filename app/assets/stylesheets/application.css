@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require bootstrap
+ *= require bootstrap-theme.min
+ *= require bootstrap-slider
+ */
+
+.red {
+	color: #cc1511;
+}
+
+.green {
+	color: #bada55;
+}
+
+.grey {
+	color: #999;
+}
+
+.type_normal {
+	color: black !important;
+	background-color: #ddd;
+}
+
+.type_fire {
+	background-color: #9e0000;
+}
+
+.type_water {
+	background-color: #1e90ff;
+}
+
+.type_electric {
+	color: black !important;
+	background-color: #ffd700;
+}
+
+.type_grass {
+	color: black !important;
+	background-color: #00b000;
+}
+
+.type_ice {
+	color: black !important;
+	background-color: #40e0d0;
+}
+
+.type_fighting {
+	background-color: #550000;
+}
+
+.type_ground {
+	color: black !important;
+	background-color: #deb887;
+}
+
+.type_flying {
+	color: black !important;
+	background-color: #afeeee;
+}
+
+.type_poison {
+	background-color: #800080;
+}
+
+.type_psychic {
+	background-color: #c71585;
+}
+
+.type_bug {
+	background-color: #808000;
+}
+
+.type_rock {
+	background-color: #8b4513;
+}
+
+.type_ghost {
+	background-color: #8a2be2;
+}
+
+.type_dragon {
+	background-color: #3300CC;
+}
+
+.type_dark {
+	background-color: #4b0082;
+}
+
+.type_steel {
+	color: black !important;
+	background-color: #c0c0c0;
+}
+
+.type_fairy {
+	color: black !important;
+	background-color: #ff69b4;
+}
