@@ -2,9 +2,51 @@ h1.row
   .col-md-12
     p
       = @pokemon.name
-      | (
+      | (# 
       = @pokemon.id
       | )
+
+.row
+  h2.col-md-12
+    | Type
+  .col-md-4
+    table.table
+      thead
+        tr
+          th Type 1
+          th Type 2
+      tbody
+        tr
+          - @pokemon.types.each do |type|
+            td= type.to_html
+          - if @pokemon.types.count < 2
+            td
+
+.row
+  h2.col-md-12
+    | Typeinteraction
+  .col-md-12
+    table.table
+      thead
+        tr
+          - @types.each do |type|
+            th= type.to_html
+      tbody
+        tr
+          - @effects.each do |effect|
+            - if effect == '2.0'
+              td.green
+                = effect
+            - elsif effect == '0.0'
+              td.grey
+                = effect
+            - elsif effect == '0.5'
+              td.red
+                = effect
+            - else
+              td
+                = effect
+
 .row
   h2.col-md-12
     | Stats
@@ -12,7 +54,7 @@ h1.row
     table.table
       thead
         tr
-          th
+          th#level-table Level 50
           th Basestat
           th Min (negatives Wesen)
           th Min (neutrales Wesen)
@@ -20,56 +62,70 @@ h1.row
           th Max (positives Wesen)
       tbody
         tr
-          td Hitpoints
+          th Hitpoints
           td#hp_stat= @pokemon.hp_base
           - 4.times do |c|
-            td id="#hp_#{c + 1}_calced"
+            td id="hp_#{c + 1}_calced"
         tr
-          td Attack
+          th Attack
           td#attack_stat= @pokemon.attack_base
           - 4.times do |c|
-            td id="#attack_#{c + 1}_calced"
+            td id="attack_#{c + 1}_calced"
         tr
-          td Defense
+          th Defense
           td#defense_stat= @pokemon.defense_base
           - 4.times do |c|
-            td id="#defense_#{c + 1}_calced"
+            td id="defense_#{c + 1}_calced"
         tr
-          td Special Attack
+          th Special Attack
           td#special_attack_stat= @pokemon.special_attack_base
           - 4.times do |c|
-            td id="#special_attack_#{c + 1}_calced"
+            td id="special_attack_#{c + 1}_calced"
         tr
-          td Special Defense
+          th Special Defense
           td#special_defense_stat= @pokemon.special_defense_base
           - 4.times do |c|
-            td id="#special_defense_#{c + 1}_calced"
+            td id="special_defense_#{c + 1}_calced"
         tr
-          td Speed
+          th Speed
           td#speed_stat= @pokemon.speed_base
           - 4.times do |c|
-            td id="#speed_#{c + 1}_calced"
+            td id="speed_#{c + 1}_calced"
         tr
-          td Statsumme
+          th Statsumme
           td= @pokemon.hp_base + @pokemon.attack_base + @pokemon.defense_base + @pokemon.special_attack_base + @pokemon.special_defense_base + @pokemon.speed_base
-          - 4.times do |c|
-            td id="#sum_#{c + 1}_calced"
-
-input#ex1.col-md-6 data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"
+.row
+  h3.col-md-12 Level
+.well        
+  input#level-slide.col-md-6 data-slider-id='level-slideSlider' type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"
+.row
+  h3.col-md-12 IV
+.well 
+  input#iv-slide.col-md-6 data-slider-id='iv-slideSlider' type="text" data-slider-min="0" data-slider-max="31" data-slider-step="1" data-slider-value="31"
 
 
 javascript:
-  $('#ex1').slider({
-    width: 400,
+  var level = 50
+  var iv = 31
+
+  $('#level-slide').slider({
+    width: 300,
     formater: function(value) {
-      $('#output').val(value)
+      level = value
+      $('#level-table').html('Level ' + value)
+      update_stats()
       return 'Current value: ' + value
     }
-  });
+  })
 
-  function update_stats(level) {
-
-  }
+  $('#iv-slide').slider({
+    width: 300,
+    formater: function(value) {
+      iv = value
+      update_stats()
+      return 'Current value: ' + value
+    }
+  })
 
   function calculate_hp(level, base, ev, iv) {
     //Level, Base, EV and IV have to be Integer
@@ -79,8 +135,46 @@ javascript:
   function calculate_stat(level, base, ev, iv, nature) {
     //Level, Base, EV and IV have to be Integer
     //nature has to be float: 0.9, 1.0 or 1.1
-    ev = ev || 0
-    iv = iv || 31
-    nature = nature || 1
     return Math.floor(Math.floor((iv + 2*base + ev/4 + 100) * level / 100 + 5) * nature)
+  }
+
+  function update_stats() {
+    var stats = ["hp", "attack", "defense", "special_attack", "special_defense", "speed"]
+    var ev
+    var nature
+    var table_field
+    var base_stat
+
+    for (stat in stats) {
+      stat = stats[stat]
+      base_stat = parseInt($('#' + stat + '_stat').html())
+      for (var i = 1; i <= 4; i++) {
+        switch (i) {
+          case 1:
+            ev = 0
+            nature = 0.9
+            break
+          case 2:
+            ev = 0
+            nature = 1.0
+            break
+          case 3:
+            ev = 252
+            nature = 1.0
+            break
+          case 4:
+            ev = 252
+            nature = 1.1
+            break
+        }
+
+        table_field = $('#' + stat + '_' + i + '_calced')
+
+        if (stat == "hp") {
+          table_field.html(calculate_hp(level, base_stat, ev, iv))
+        } else {
+          table_field.html(calculate_stat(level, base_stat, ev, iv, nature))
+        }
+      }
+    }
   }

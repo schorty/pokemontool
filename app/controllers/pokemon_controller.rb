@@ -5,6 +5,12 @@ class PokemonController < ApplicationController
 
   def show
   	@pokemon = Pokemon.find(pokemon_params[:id])
+    @types = Type.all
+    @effects = []
+    @types.each do |type|
+      @effects << @pokemon.calc_damage_factor_against(type).to_s
+    end
+    binding.pry
   end
 
   private
