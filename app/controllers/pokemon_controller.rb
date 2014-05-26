@@ -10,7 +10,6 @@ class PokemonController < ApplicationController
     @types.each do |type|
       @effects << @pokemon.calc_damage_factor_against(type).to_s
     end
-    binding.pry
   end
 
   private
