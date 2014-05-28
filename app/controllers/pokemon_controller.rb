@@ -10,6 +10,7 @@ class PokemonController < ApplicationController
     @types.each do |type|
       @effects << @pokemon.calc_damage_factor_against(type).to_s
     end
+    @pokemon_moves = @pokemon.pokemon_moves.order(:learn_method, :level).includes(:move)
   end
 
   private

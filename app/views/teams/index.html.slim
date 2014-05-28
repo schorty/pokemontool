@@ -1,0 +1,20 @@
+= button_to new_team_path, method: :get, class: "btn btn-default"
+  .glyphicon.glyphicon-plus
+
+- if @teams.any?
+  table.table
+    thead
+      tr
+        th Team
+        - 6.times do |c|
+          th
+    tbody
+      - @teams.each do |team|
+        tr
+          td= link_to team.name, team
+          - team.pokemon.each do |pokemon|
+            td= pokemon.name
+          - (6 - team.pokemon.count).times do |c|
+            td
+- else
+  p Bisher wurden keine Teams erstellt

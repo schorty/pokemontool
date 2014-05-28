@@ -12,6 +12,7 @@
  *= require bootstrap
  *= require bootstrap-theme.min
  *= require bootstrap-slider
+ *= require glyphicon
  */
 
 .red {

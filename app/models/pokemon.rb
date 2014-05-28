@@ -3,6 +3,7 @@ class Pokemon < ActiveRecord::Base
   has_many :pokemon_moves, dependent: :destroy
   has_many :types, through: :pokemon_types
   has_many :moves, through: :pokemon_moves
+  has_many :teams, through: :team_memberships
 
   validates :name, presence: true
 

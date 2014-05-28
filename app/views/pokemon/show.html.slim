@@ -8,7 +8,7 @@ h1.row
 
 .row
   h2.col-md-12
-    | Type
+    | Typ
   .col-md-4
     table.table
       thead
@@ -24,7 +24,7 @@ h1.row
 
 .row
   h2.col-md-12
-    | Typeinteraction
+    | Typinteraktion
   .col-md-12
     table.table
       thead
@@ -49,13 +49,13 @@ h1.row
 
 .row
   h2.col-md-12
-    | Stats
+    | Statuswerte
   .col-md-12
     table.table
       thead
         tr
           th#level-table Level 50
-          th Basestat
+          th Basis
           th Min (negatives Wesen)
           th Min (neutrales Wesen)
           th Max (neutrales Wesen)
@@ -95,14 +95,35 @@ h1.row
           th Statsumme
           td= @pokemon.hp_base + @pokemon.attack_base + @pokemon.defense_base + @pokemon.special_attack_base + @pokemon.special_defense_base + @pokemon.speed_base
 .row
-  h3.col-md-12 Level
-.well        
+  h4.col-md-12 Level
+.well
+  span#level-value 50
   input#level-slide.col-md-6 data-slider-id='level-slideSlider' type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"
 .row
-  h3.col-md-12 IV
-.well 
+  h4.col-md-12 IV
+.well
+  span#iv-value 50
   input#iv-slide.col-md-6 data-slider-id='iv-slideSlider' type="text" data-slider-min="0" data-slider-max="31" data-slider-step="1" data-slider-value="31"
 
+.row
+  h2.col-md-12
+    | Attacken
+  .col-md-12
+    table.table
+      thead
+        tr
+          th Attacke
+          th Typ
+          th Lernmethode
+      tbody
+        - @pokemon_moves.each do |pokemon_move|
+          tr
+            td= link_to pokemon_move.move.name, pokemon_move.move
+            td= pokemon_move.move.type.to_html
+            - if pokemon_move.learn_method == "Level"
+              td= "Level #{pokemon_move.level}"
+            - else
+              td= pokemon_move.learn_method
 
 javascript:
   var level = 50
@@ -113,6 +134,7 @@ javascript:
     formater: function(value) {
       level = value
       $('#level-table').html('Level ' + value)
+      $('#level-value').html(value)
       update_stats()
       return 'Current value: ' + value
     }
@@ -122,6 +144,7 @@ javascript:
     width: 300,
     formater: function(value) {
       iv = value
+      $('#iv-value').html(value)
       update_stats()
       return 'Current value: ' + value
     }

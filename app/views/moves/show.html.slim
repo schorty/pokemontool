@@ -1,2 +1,22 @@
-h1 Move#show
-p Find me in app/views/move/show.html.slim
+.row
+  h1= @move.name
+
+.row
+  table.table
+    thead
+      tr
+        th Attacke
+        th Typ
+        th AP
+        th Kraft
+    tbody
+      tr
+        td= @move.name
+        td= @move.type.to_html
+        td= @move.pp
+        td= @move.power
+
+.row
+  h2 Pokémon, die diese Attacke erlernen
+  - @move.pokemon.each do |pokemon|
+    p= pokemon.name

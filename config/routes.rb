@@ -8,6 +8,8 @@ Pokemontool::Application.routes.draw do
     end
   end
 
+  resources :teams
+
   resources :moves
 
   get "typechart/show_chart"

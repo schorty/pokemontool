@@ -1,0 +1,25 @@
+h1
+  = @team.name
+table.table
+  thead
+    tr
+      th Pokemon
+      th Level
+      th HP
+      th Attack
+      th Defense
+      th Special Attack
+      th Special Defense
+      th Speed
+  tbody
+    - @team.team_memberships.each do |tm|
+      tr
+        td= tm.pokemon.name
+        td= tm.level
+        td= "#{tm.iv_hp} / #{tm.ev_hp}"
+        td= "#{tm.iv_attack} / #{tm.ev_attack}"
+        td= "#{tm.iv_defense} / #{tm.ev_defense}"
+        td= "#{tm.iv_special_attack} / #{tm.ev_special_attack}"
+        td= "#{tm.iv_special_defense} / #{tm.ev_special_defense}"
+        td= "#{tm.iv_speed} / #{tm.ev_speed}"
+

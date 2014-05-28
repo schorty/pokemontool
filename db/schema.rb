@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520141712) do
+ActiveRecord::Schema.define(version: 20140526111127) do
 
   create_table "effects", force: true do |t|
     t.string   "type_id"
@@ -57,6 +57,32 @@ ActiveRecord::Schema.define(version: 20140520141712) do
     t.integer  "special_attack_base"
     t.integer  "special_defense_base"
     t.integer  "speed_base"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "team_memberships", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "pokemon_id"
+    t.integer  "level"
+    t.integer  "ev_hp"
+    t.integer  "ev_attack"
+    t.integer  "ev_defense"
+    t.integer  "ev_special_attack"
+    t.integer  "ev_special_defense"
+    t.integer  "ev_speed"
+    t.integer  "iv_hp"
+    t.integer  "iv_attack"
+    t.integer  "iv_defense"
+    t.integer  "iv_special_attack"
+    t.integer  "iv_special_defense"
+    t.integer  "iv_speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
