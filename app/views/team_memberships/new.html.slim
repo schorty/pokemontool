@@ -1,0 +1,15 @@
+h2 Neues Teammitglied hinzufügen
+= form_for [@team, @team_membership], html: {class: 'form-horizontal'} do |f|
+  .form-group
+    = f.label :pokemon_id, 'Pokémon', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select "pokemon_id", options_from_collection_for_select(@pokemon, :id, :name, @team_membership.pokemon_id)
+  .form-group
+    = f.label :level, 'Level', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :level, value: 100, in: 1..100
+  .form-group
+    .col-sm-2
+    .col-sm-10
+      = f.button :submit, class: 'btn btn-default'
+        | Hinzufügen

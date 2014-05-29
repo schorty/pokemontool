@@ -15,6 +15,12 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+    
+    if @team.save!
+      redirect_to teams_url, notice: 'Team created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,7 +29,7 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
-      redirect_to team_url, notice: 'Team updated.'
+      redirect_to teams_url, notice: 'Team updated.'
     else
       render :edit
     end
@@ -31,7 +37,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to team_url, notice: 'Team deleted.'
+    redirect_to teams_url, notice: 'Team deleted.'
   end
 
   private

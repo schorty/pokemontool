@@ -1,2 +1,11 @@
-h1 TeamsController#new
-p Find me in app/views/teams_controller/new.html.slim
+h2 Neues Team erstellen
+= form_for @team, html: {class: 'form-horizontal'} do |f|
+  .form-group
+    = f.label :name, 'Name', class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :name, class: 'form-control', placeholder: 'Name eingeben'
+  .form-group
+    .col-sm-2
+    .col-sm-10
+      = f.button :submit, class: 'btn btn-default'
+        | Erstellen
