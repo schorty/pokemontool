@@ -124,80 +124,81 @@ h1.row
               td= "Level #{pokemon_move.level}"
             - else
               td= pokemon_move.learn_method
+              
+- content_for(:javascripts)
+  javascript:
+    var level = 50
+    var iv = 31
 
-javascript:
-  var level = 50
-  var iv = 31
+    $('#level-slide').slider({
+      width: 300,
+      formater: function(value) {
+        level = value
+        $('#level-table').html('Level ' + value)
+        $('#level-value').html(value)
+        update_stats()
+        return 'Current value: ' + value
+      }
+    })
 
-  $('#level-slide').slider({
-    width: 300,
-    formater: function(value) {
-      level = value
-      $('#level-table').html('Level ' + value)
-      $('#level-value').html(value)
-      update_stats()
-      return 'Current value: ' + value
+    $('#iv-slide').slider({
+      width: 300,
+      formater: function(value) {
+        iv = value
+        $('#iv-value').html(value)
+        update_stats()
+        return 'Current value: ' + value
+      }
+    })
+
+    function calculate_hp(level, base, ev, iv) {
+      //Level, Base, EV and IV have to be Integer
+      return Math.floor( (iv + 2*base + ev/4 + 100) * level / 100 + 10 )
     }
-  })
 
-  $('#iv-slide').slider({
-    width: 300,
-    formater: function(value) {
-      iv = value
-      $('#iv-value').html(value)
-      update_stats()
-      return 'Current value: ' + value
+    function calculate_stat(level, base, ev, iv, nature) {
+      //Level, Base, EV and IV have to be Integer
+      //nature has to be float: 0.9, 1.0 or 1.1
+      return Math.floor(Math.floor((iv + 2*base + ev/4 + 100) * level / 100 + 5) * nature)
     }
-  })
 
-  function calculate_hp(level, base, ev, iv) {
-    //Level, Base, EV and IV have to be Integer
-    return Math.floor( (iv + 2*base + ev/4 + 100) * level / 100 + 10 )
-  }
+    function update_stats() {
+      var stats = ["hp", "attack", "defense", "special_attack", "special_defense", "speed"]
+      var ev
+      var nature
+      var table_field
+      var base_stat
 
-  function calculate_stat(level, base, ev, iv, nature) {
-    //Level, Base, EV and IV have to be Integer
-    //nature has to be float: 0.9, 1.0 or 1.1
-    return Math.floor(Math.floor((iv + 2*base + ev/4 + 100) * level / 100 + 5) * nature)
-  }
+      for (stat in stats) {
+        stat = stats[stat]
+        base_stat = parseInt($('#' + stat + '_stat').html())
+        for (var i = 1; i <= 4; i++) {
+          switch (i) {
+            case 1:
+              ev = 0
+              nature = 0.9
+              break
+            case 2:
+              ev = 0
+              nature = 1.0
+              break
+            case 3:
+              ev = 252
+              nature = 1.0
+              break
+            case 4:
+              ev = 252
+              nature = 1.1
+              break
+          }
 
-  function update_stats() {
-    var stats = ["hp", "attack", "defense", "special_attack", "special_defense", "speed"]
-    var ev
-    var nature
-    var table_field
-    var base_stat
+          table_field = $('#' + stat + '_' + i + '_calced')
 
-    for (stat in stats) {
-      stat = stats[stat]
-      base_stat = parseInt($('#' + stat + '_stat').html())
-      for (var i = 1; i <= 4; i++) {
-        switch (i) {
-          case 1:
-            ev = 0
-            nature = 0.9
-            break
-          case 2:
-            ev = 0
-            nature = 1.0
-            break
-          case 3:
-            ev = 252
-            nature = 1.0
-            break
-          case 4:
-            ev = 252
-            nature = 1.1
-            break
-        }
-
-        table_field = $('#' + stat + '_' + i + '_calced')
-
-        if (stat == "hp") {
-          table_field.html(calculate_hp(level, base_stat, ev, iv))
-        } else {
-          table_field.html(calculate_stat(level, base_stat, ev, iv, nature))
+          if (stat == "hp") {
+            table_field.html(calculate_hp(level, base_stat, ev, iv))
+          } else {
+            table_field.html(calculate_stat(level, base_stat, ev, iv, nature))
+          }
         }
       }
     }
-  }

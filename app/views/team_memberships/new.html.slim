@@ -1,5 +1,5 @@
 h2 Neues Teammitglied hinzufügen
-= form_for [@team, @team_membership], html: {class: 'form-horizontal'} do |f|
+= form_for @team_membership, html: {class: 'form-horizontal'} do |f|
   .form-group
     = f.label :pokemon_id, 'Pokémon', class: 'col-sm-2 control-label'
     .col-sm-10
@@ -7,9 +7,35 @@ h2 Neues Teammitglied hinzufügen
   .form-group
     = f.label :level, 'Level', class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.number_field :level, value: 100, in: 1..100
+      = f.number_field :level, value: 100, in: 1..100  
+  .form-group
+    table.table
+      thead
+        tr
+          th Stat
+          th Statvalue
+          th EV
+          th
+          th IV
+      tbody
+        tr
+          td= f.label :ev_hp, 'HP', class: 'col-sm-2 control-label'
+          td
+          td= f.text_field :ev_hp, data: {'slider-id' => 'team_membership_ev_hpSlider', 'slider-min' => 0, 'slider-max' => 252, 'slider-step' => 4, 'slider-value' => 0}
+          td#ev_hp style='text-align: left'
+          td= f.number_field :iv_hp, value: 31, in: 0..31
   .form-group
     .col-sm-2
     .col-sm-10
       = f.button :submit, class: 'btn btn-default'
         | Hinzufügen
+
+- content_for(:javascripts)
+  javascript:
+    $('#team_membership_ev_hp').slider({
+      width: 300,
+      formater: function(value) {
+        $('#ev_hp').html(value)
+        return 'Current value: ' + value
+      }
+    })

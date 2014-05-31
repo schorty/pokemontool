@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20140526111127) do
     t.integer  "iv_special_attack"
     t.integer  "iv_special_defense"
     t.integer  "iv_speed"
+    t.integer  "attack_1"
+    t.integer  "attack_2"
+    t.integer  "attack_3"
+    t.integer  "attack_4"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
