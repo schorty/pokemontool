@@ -5,6 +5,7 @@ class TeamMembershipsController < ApplicationController
   def new
     @team_membership = TeamMembership.new
     @pokemon = Pokemon.all.order(:name)
+    @stats = {'HP' => 'hp', 'Attack' => 'attack', 'Defense' => 'defense', 'Special&nbsp;Attack'.html_safe => 'special_attack', 'Special&nbsp;Defense'.html_safe => 'special_defense', 'Speed' => 'speed',}
   end
 
   def create

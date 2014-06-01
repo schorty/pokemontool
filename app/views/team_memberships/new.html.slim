@@ -18,12 +18,13 @@ h2 Neues Teammitglied hinzufügen
           th
           th IV
       tbody
-        tr
-          td= f.label :ev_hp, 'HP', class: 'col-sm-2 control-label'
-          td
-          td= f.text_field :ev_hp, data: {'slider-id' => 'team_membership_ev_hpSlider', 'slider-min' => 0, 'slider-max' => 252, 'slider-step' => 4, 'slider-value' => 0}
-          td#ev_hp style='text-align: left'
-          td= f.number_field :iv_hp, value: 31, in: 0..31
+        - @stats.each do |label, stat|
+          tr
+            td= f.label :"ev_#{stat}", label, class: 'col-sm-2 control-label'
+            td
+            td= f.text_field :"ev_#{stat}", data: {'slider-id' => 'team_membership_ev_#{stat}Slider', 'slider-min' => 0, 'slider-max' => 252, 'slider-step' => 4}
+            td id="ev_#{stat}" class="ev_value"
+            td= f.number_field :"iv_#{stat}", value: 31, in: 0..31, class: 'iv_input'
   .form-group
     .col-sm-2
     .col-sm-10
@@ -31,11 +32,12 @@ h2 Neues Teammitglied hinzufügen
         | Hinzufügen
 
 - content_for(:javascripts)
-  javascript:
-    $('#team_membership_ev_hp').slider({
-      width: 300,
-      formater: function(value) {
-        $('#ev_hp').html(value)
-        return 'Current value: ' + value
-      }
-    })
+  - @stats.each do |label, stat|
+    javascript:
+      $("#team_membership_ev_#{stat}").slider({
+        value: 0.0,
+        formater: function(value) {
+          $("#ev_#{stat}").html(value)
+          return 'Current value: ' + value
+        }
+      })

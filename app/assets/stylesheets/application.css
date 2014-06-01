@@ -13,6 +13,7 @@
  *= require bootstrap-theme.min
  *= require bootstrap-slider
  *= require glyphicon
+ *= require team_membership
  */
 
 .red {
